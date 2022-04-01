@@ -1,4 +1,4 @@
-#include <eosio.token/hisoetoken.hpp>
+#include <eosio.token/cmwtoken.hpp>
 
 namespace hisoe {
 

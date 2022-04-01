@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.9)
-project(hisoetoken)
+project(cmwtoken)
 include_directories(include)
 
 if ("${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
@@ -12,7 +12,7 @@ if ("${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
     add_definitions(-DNOEOS)
 
 
-    add_executable(hisoetoken src/hisoetoken.cpp include/eosio.token/hisoetoken.hpp)
+    add_executable(hisoetoken src/cmwtoken.cpp include/eosio.token/cmwtoken.hpp)
     target_include_directories(hisoetoken PUBLIC ${EOSIO}/ ${EOSIOLIB}/core ${EOSIOLIB}/contracts ${EOSIOLIB}/capi ${EOSIOLIB}/native)
 
 
@@ -23,6 +23,6 @@ else ()
     add_compile_options(-Os)
     add_contract(
             hisoetoken hisoetoken
-            src/hisoetoken.cpp
+            src/cmwtoken.cpp
     )
 endif ()
