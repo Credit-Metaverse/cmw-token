@@ -1,6 +1,6 @@
 #include <eosio.token/cmwtoken.hpp>
 
-namespace hisoe {
+namespace cmw {
 
     void token::create( const name&   issuer,
                         const asset&  maximum_supply )
@@ -156,4 +156,4 @@ namespace hisoe {
         acnts.erase( it );
     }
 
-} /// namespace eosio
+} // namespace cmw

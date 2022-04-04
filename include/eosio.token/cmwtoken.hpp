@@ -8,7 +8,7 @@
 using namespace eosio;
 
 
-namespace hisoe {
+namespace cmw {
 
     using std::string;
 
@@ -142,4 +142,4 @@ class [[eosio::contract("hisoetoken")]] token : public contract {
         void add_balance( const name& owner, const asset& value, const name& ram_payer );
     };
 
-}
+} // namespace cmw
