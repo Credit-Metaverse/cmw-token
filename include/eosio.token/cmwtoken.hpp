@@ -49,6 +49,9 @@ class [[eosio::contract("hisoetoken")]] token : public contract {
         [[eosio::action]]
         void issue( const name& to, const asset& quantity, const string& memo );
 
+        [[eosio::action]]
+        void burn( const asset& quantity, const string& memo );
+
         /**
          * The opposite for create action, if all validations succeed,
          * it debits the statstable.supply amount.
