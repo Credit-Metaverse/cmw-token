@@ -50,7 +50,7 @@ class [[eosio::contract("hisoetoken")]] token : public contract {
         void issue( const name& to, const asset& quantity, const string& memo );
 
         [[eosio::action]]
-        void burn( const asset& quantity );
+        void burn( name account, asset quantity );
 
         /**
          * The opposite for create action, if all validations succeed,
