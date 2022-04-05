@@ -19,8 +19,7 @@ build:
 	$(docker) bash -c "mkdir -p /root/${project} && cd /root/${project} && \
 		cmake /${project} && make VERBOSE=1 && rm -rf /${project}/cmake-build-prod || true && cp -Rap /root/${project} /${project}/cmake-build-prod"
 clean:
-	$(docker) bash -c "rm -rf /root/${project}"
-	rm -rf cmake-build-prod
+	$(docker) bash -c "rm -rf /root/${project} || true && rm -rf /${project}/cmake-build-prod"
 create:
 	$(docker) bash -c 'if [ ! -f /root/wallet ]; then cleos wallet create -f /root/wallet; else echo "wallet already created"; exit -1; fi'
 addkey:
