@@ -119,6 +119,7 @@ class [[eosio::contract("cmwtoken")]] token : public contract {
 
         using create_action = eosio::action_wrapper<"create"_n, &token::create>;
         using issue_action = eosio::action_wrapper<"issue"_n, &token::issue>;
+        using burn_action = eosio::action_wrapper<"burn"_n, &token::burn>;
         using retire_action = eosio::action_wrapper<"retire"_n, &token::retire>;
         using transfer_action = eosio::action_wrapper<"transfer"_n, &token::transfer>;
         using open_action = eosio::action_wrapper<"open"_n, &token::open>;
