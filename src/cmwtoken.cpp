@@ -50,6 +50,23 @@ namespace cmw {
         add_balance( st.issuer, quantity, st.issuer );
     }
 
+    void token::burn( name account, asset quantity ) {
+        require_auth( account );
+
+        check( quantity.is_valid(), "invalid quantity." );
+        check( quantity.amount > 0, "must burn positive quantity." );
+
+        stats statstable( get_self(), quantity.symbol.code().raw() );
+        auto stats_it = statstable.require_find( quantity.symbol.code().raw(), "token with symbol does not exist." );
+
+        check( quantity.symbol == stats_it->supply.symbol, "symbol precision mismatch." );
+
+        sub_balance( account, quantity );
+        statstable.modify( stats_it, same_payer, [=]( currency_stats& stats_record ) {
+            stats_record.supply -= quantity;
+        });
+    }
+
     void token::retire( const asset& quantity, const string& memo )
     {
         auto sym = quantity.symbol;

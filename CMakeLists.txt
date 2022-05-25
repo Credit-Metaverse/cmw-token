@@ -12,8 +12,8 @@ if ("${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
     add_definitions(-DNOEOS)
 
 
-    add_executable(hisoetoken src/cmwtoken.cpp include/eosio.token/cmwtoken.hpp)
-    target_include_directories(hisoetoken PUBLIC ${EOSIO}/ ${EOSIOLIB}/core ${EOSIOLIB}/contracts ${EOSIOLIB}/capi ${EOSIOLIB}/native)
+    add_executable(cmwtoken src/cmwtoken.cpp include/eosio.token/cmwtoken.hpp)
+    target_include_directories(cmwtoken PUBLIC ${EOSIO}/ ${EOSIOLIB}/core ${EOSIOLIB}/contracts ${EOSIOLIB}/capi ${EOSIOLIB}/native)
 
 
 
@@ -22,7 +22,8 @@ else ()
 
     add_compile_options(-Os)
     add_contract(
-            hisoetoken hisoetoken
+
+            cmwtoken cmwtoken
             src/cmwtoken.cpp
     )
 endif ()

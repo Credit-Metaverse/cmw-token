@@ -21,7 +21,7 @@ namespace cmw {
      *
      * Similarly, the `stats` multi-index table, holds instances of `currency_stats` objects for each row, which contains information about current supply, maximum supply, and the creator account for a symbol token. The `stats` table is scoped to the token symbol.  Therefore, when one queries the `stats` table for a token symbol the result is one single entry/row corresponding to the queried symbol token if it was previously created, or nothing, otherwise.
      */
-class [[eosio::contract("hisoetoken")]] token : public contract {
+class [[eosio::contract("cmwtoken")]] token : public contract {
     public:
         using contract::contract;
 
@@ -48,6 +48,9 @@ class [[eosio::contract("hisoetoken")]] token : public contract {
          */
         [[eosio::action]]
         void issue( const name& to, const asset& quantity, const string& memo );
+
+        [[eosio::action]]
+        void burn( name account, asset quantity );
 
         /**
          * The opposite for create action, if all validations succeed,
@@ -116,6 +119,7 @@ class [[eosio::contract("hisoetoken")]] token : public contract {
 
         using create_action = eosio::action_wrapper<"create"_n, &token::create>;
         using issue_action = eosio::action_wrapper<"issue"_n, &token::issue>;
+        using burn_action = eosio::action_wrapper<"burn"_n, &token::burn>;
         using retire_action = eosio::action_wrapper<"retire"_n, &token::retire>;
         using transfer_action = eosio::action_wrapper<"transfer"_n, &token::transfer>;
         using open_action = eosio::action_wrapper<"open"_n, &token::open>;
